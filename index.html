@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Futuristic Portfolio - Daniel Eromosen Unuagba</title>
+
+<style>
+/* =============================
+   GLOBAL STYLES
+============================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background: #0f0f1a;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* =============================
+   FLOATING GRADIENT BLOBS
+============================= */
+.blob{
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    filter: blur(120px);
+    opacity:0.7;
+    z-index:-1;
+    animation: floatBlob 20s infinite alternate;
+}
+
+.blob1{
+    background: linear-gradient(45deg,#ff00ff,#00ffff);
+    top:-100px;
+    left:-100px;
+}
+
+.blob2{
+    background: linear-gradient(45deg,#ffff00,#00ffcc);
+    bottom:-100px;
+    right:-100px;
+}
+
+@keyframes floatBlob{
+    0%{transform:translate(0,0);}
+    100%{transform:translate(200px,-150px);}
+}
+
+/* =============================
+   GLASS EFFECT
+============================= */
+.glass{
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:15px;
+}
+
+/* =============================
+   NAVBAR
+============================= */
+nav{
+    position: fixed;
+    width:100%;
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:999;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#00ffff;
+}
+
+/* =============================
+   HERO SECTION
+============================= */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:50px;
+    padding:100px 20px;
+    flex-wrap:wrap;
+}
+
+.hero-text{
+    max-width:500px;
+}
+
+.hero h1{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.subtitle{
+    font-size:20px;
+    color:#ccc;
+    margin-bottom:25px;
+}
+
+/* Typing cursor */
+.cursor{
+    border-right:3px solid #00ffff;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink{
+    50%{border-color:transparent;}
+}
+
+/* Profile image animation */
+.hero img{
+    width:320px;
+    border-radius:20px;
+    animation: floatImage 6s ease-in-out infinite;
+}
+
+@keyframes floatImage{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-20px);}
+    100%{transform:translateY(0);}
+}
+
+/* Button */
+.btn{
+    padding:14px 30px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:16px;
+    color:white;
+    background: linear-gradient(45deg,#ff00ff,#00ffff,#ffff00);
+    box-shadow:0 0 20px rgba(0,255,255,0.7);
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.1);
+}
+
+/* =============================
+   SECTIONS
+============================= */
+section{
+    padding:100px 20px;
+    max-width:1100px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:32px;
+}
+
+/* Fade animation */
+.fade{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =============================
+   SKILLS
+============================= */
+.skill{
+    margin-bottom:20px;
+}
+
+.progress{
+    height:12px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.1);
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background: linear-gradient(90deg,#ff00ff,#00ffff,#ffff00);
+    transition:2s;
+}
+
+/* =============================
+   VIDEO
+============================= */
+.video-box video{
+    width:100%;
+    border-radius:15px;
+    border:2px solid rgba(0,255,255,0.6);
+    box-shadow:0 0 25px rgba(0,255,255,0.6);
+}
+
+/* =============================
+   PROJECT GRID
+============================= */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    padding:25px;
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 0 25px #00ffff;
+}
+
+/* =============================
+   FOOTER
+============================= */
+footer{
+    text-align:center;
+    padding:30px;
+    margin-top:50px;
+    opacity:0.8;
+}
+
+/* =============================
+   RESPONSIVE
+============================= */
+@media(max-width:768px){
+    .hero h1{
+        font-size:32px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Gradient blobs -->
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
+<!-- =============================
+NAVBAR
+============================= -->
+<nav class="glass">
+    <h3>Portfolio</h3>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- =============================
+HERO
+============================= -->
+<section class="hero">
+    
+<div class="hero-text">
+<h1>
+<span id="typing"></span>
+<span class="cursor"></span>
+</h1>
+
+<p class="subtitle">Creative Frontend Developers</p>
+
+<button class="btn"><a href="https://wa.me/2348130033847" style="text-decoration: none; color: navy; font-weight: bolder; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 15px;">contact teacher</a></button>
+</div>
+
+<img src="/IMG_1987.jpeg">
+
+</section>
+
+<!-- =============================
+ABOUT
+============================= -->
+<section class="fade glass">
+<h2 class="section-title">About</h2>
+
+<p>
+we are creative frontend developers passionate about building modern, responsive and visually stunning websites using HTML, CSS and JavaScript. we enjoy designing futuristic interfaces, smooth animations and engaging user experiences.
+</p>
+</section>
+
+<!-- =============================
+SKILLS
+============================= -->
+<section id="skills" class="fade glass">
+<h2 class="section-title">Skills</h2>
+
+<div class="skill">
+HTML
+<div class="progress"><div class="progress-bar" data-width="95%"></div></div>
+</div>
+
+<div class="skill">
+CSS
+<div class="progress"><div class="progress-bar" data-width="90%"></div></div>
+</div>
+
+<div class="skill">
+JavaScript
+<div class="progress"><div class="progress-bar" data-width="85%"></div></div>
+</div>
+
+<div class="skill">
+UI Design
+<div class="progress"><div class="progress-bar" data-width="80%"></div></div>
+</div>
+
+</section>
+
+<!-- =============================
+VIDEO
+============================= -->
+<section class="fade glass">
+<h2 class="section-title">Demo Video</h2>
+
+<div class="video-box">
+<video controls>
+<source src="https://vt.tiktok.com/ZSmVRjxxn/" type="video/mp4">
+</video>
+</div>
+
+</section>
+
+<!-- =============================
+PROJECTS
+============================= -->
+<section id="projects" class="fade">
+<h2 class="section-title">Projects</h2>
+
+<div class="grid">
+
+<div class="card glass">
+<h3>Portfolio Website</h3>
+<p>Modern animated portfolio design using glassmorphism.</p>
+</div>
+
+<div class="card glass">
+<h3>School Website</h3>
+<p>Responsive educational website with clean layout.</p>
+</div>
+
+<div class="card glass">
+<h3>UI Design System</h3>
+<p>Reusable UI components and design patterns.</p>
+</div>
+
+</div>
+</section>
+
+<footer id="contact" class="glass">
+<p>© 2026 Yemsol Coding Class | All Rights Reserved</p>
+</footer>
+
+<script>
+/* =============================
+Typing Animation
+============================= */
+const text = "semilore sharon amira and james";
+let index = 0;
+
+function type(){
+    if(index < text.length){
+        document.getElementById("typing").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(type,80);
+    }
+}
+type();
+
+/* =============================
+Fade-in on Scroll
+============================= */
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+    if(entry.isIntersecting){
+        entry.target.classList.add("show");
+    }
+});
+});
+
+document.querySelectorAll(".fade").forEach(el=>{
+observer.observe(el);
+});
+
+/* =============================
+Animated Skills on Scroll
+============================= */
+const skillObserver = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+    const bars = entry.target.querySelectorAll(".progress-bar");
+    bars.forEach(bar=>{
+        bar.style.width = bar.getAttribute("data-width");
+    });
+}
+});
+});
+
+skillObserver.observe(document.querySelector("#skills"));
+</script>
+
+</body>
+</html>
